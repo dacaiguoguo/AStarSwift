@@ -12,6 +12,12 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let p = Person()
+        let a = p.name
+        let lox = p.locationX
+        let loy = p.locationY
+        print("name :\(a) locationX: \(lox)  locationY: \(loy)")
+        p.sayhelloTo()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
