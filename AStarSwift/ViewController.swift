@@ -17,9 +17,18 @@ class ViewController: UIViewController {
 //        print("l is \(l)")
         let startNode = Node(aX:10,aY:10)
         sw.openTable.append(startNode)
+        sw.qiangTable.append(Node(aX:11,aY:11,aIsAccess: false,aIsInClosedTable:false))
+        sw.qiangTable.append(Node(aX:12,aY:12,aIsAccess: false,aIsInClosedTable:false))
+        sw.qiangTable.append(Node(aX:10,aY:11,aIsAccess: false,aIsInClosedTable:false))
+        sw.qiangTable.append(Node(aX:11,aY:13,aIsAccess: false,aIsInClosedTable:false))
+        sw.qiangTable.append(Node(aX:11,aY:12,aIsAccess: false,aIsInClosedTable:false))
         startNode.isInOpentable = true
         sw.searchNexNode(startNode, nodeB: Node(aX:16,aY:19)) { (a) in
-            print("a is \(a.x)\(a.y)")
+            var t = a
+            while t.parentNode != nil {
+                print("a is {\(t.x), \(t.y)}")
+                t = t.parentNode!
+            }
 
         }
 //        let p = Person()

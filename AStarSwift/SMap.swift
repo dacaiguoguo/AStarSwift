@@ -19,6 +19,7 @@ extension Array where Element : Equatable {
 class SMap:NSObject {
     var closeTable:Array<Node>
     var openTable:Array<Node>
+    var qiangTable:Array<Node>
     var kMaxF:Int
     var kSValue:Int
     var kHValue:Int
@@ -26,15 +27,12 @@ class SMap:NSObject {
     override init() {
         closeTable = []
         openTable = []
+        qiangTable = []
         kMaxF = 1000
         kSValue = 14
         kHValue = 10
     }
-    func nextNode(nodeA:Node, nodeB:Node) -> Node {
-        
-        return Node()
-    }
-    
+
     func manHValue(nodeA:Node, nodeB:Node) -> Int {
         let x = nodeA.x - nodeB.x
         let y = nodeA.y - nodeB.y
@@ -78,7 +76,18 @@ class SMap:NSObject {
                     let xx = x+i
                     let yy = y+j
                     if (xx>=0 && yy>=0 && xx<100 && yy<100) {
-                        a.append(Node(aX:xx,aY: yy))
+                        let toadd = Node(aX:xx,aY: yy)
+                        var inQiang = false
+                        for item in self.qiangTable {
+                            if item.x==toadd.x&&item.y==toadd.y {
+                                inQiang = true
+                            }
+                        }
+                        if inQiang {
+                            toadd.isAccess = false
+                        }
+                        a.append(toadd)
+
                     }
                 }
             }

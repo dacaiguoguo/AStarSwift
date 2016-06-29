@@ -29,6 +29,7 @@ class Node: NSObject {
         isInClosedTable = false
         isInOpentable = false
     }
+    
     init(aX:Int, aY:Int) {
         x = aX
         y = aY
@@ -39,11 +40,15 @@ class Node: NSObject {
         isInClosedTable = false
         isInOpentable = false
     }
-//    init(aX:Int, aY:Int, aIsAccess:Bool, aIsInClosedTable:Bool ) {
-//        x = aX
-//        y = aY
-//        isAccess = aIsAccess
-//        isInClosedTable = aIsInClosedTable
-//        isInOpentable = true
-//    }
+    
+    init(aX:Int, aY:Int, aIsAccess:Bool, aIsInClosedTable:Bool ) {
+        x = aX
+        y = aY
+        g = 0
+        h = 0
+        f = 0
+        isAccess = aIsAccess
+        isInClosedTable = aIsInClosedTable
+        isInOpentable = false
+    }
 }
